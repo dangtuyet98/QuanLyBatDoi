@@ -29,7 +29,7 @@
                 <div class="user-logo">
                     <img src="content/image/user.png" alt="user-logo">
                 </div>
-                <div class="username-text" th:utext="${user.getUsername()}"><b></b></div>
+                <div class="username-text"><b></b></div>
                 <div class="expand-icon"><i class="fa fa-caret-down"></i></div>
                 <div class="dropdown-content">
                     <a id="btn-profile"><span>Profile</span></a>
@@ -275,7 +275,7 @@
 </div>
 <div class="block" id="profile" tabindex="0">
     <form class="profile-modal">
-        <div class="profile-header">`
+        <div class="profile-header">
             Profile
         </div>
         <div class="profile-body">
@@ -287,28 +287,15 @@
             <div class="profile-inf">
                 <div>
                     <span>Name:&nbsp;&nbsp;</span>
-                    <span class="inf" th:utext="${user.getFullName()}"></span>
+                    <span class="inf-name"></span>
                     <hr>
                 </div>
                 <div>
                     <span>Email:&nbsp;&nbsp;</span>
-                    <span class="inf" th:utext="${user.getEmail()}"></span>
+                    <span class="inf-email"></span>
                     <hr>
                 </div>
-                <div>
-                    <span>Group:&nbsp;&nbsp;</span>
-                    <span class="inf" th:utext="${user.getGroupName()}"></span>
-                    <hr>
-                </div>
-                <div>
-                    <span>Created Date:&nbsp;&nbsp;</span>
-                    <span class="inf" th:utext="${user.getDateCreated()}"></span>
-                    <hr>
-                </div>
-                <div>
-                    <span>Book Count:&nbsp;&nbsp;</span>
-                    <span class="inf" th:utext="${bookCount}"></span>
-                </div>
+                
             </div>
         </div>
         <div class="profile-footer">

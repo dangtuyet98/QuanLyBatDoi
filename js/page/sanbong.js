@@ -2,6 +2,19 @@ var sanbongs = [];
 var update_link = '';
 
 $(document).ready(function () {
+
+    if(sessionStorage.getItem("islogined")==="true"){
+        $('.username-text').html(sessionStorage.getItem("adminTen"));
+        $('.inf-name').html(sessionStorage.getItem("adminTen"));
+        $('.inf-email').html(sessionStorage.getItem("adminEmail"));
+        $('.avatar').prop('src', sessionStorage.getItem("adminAnhbia"));
+        $('.user-logo img').prop('src', sessionStorage.getItem("adminAnhbia"));
+        
+    }
+    else{
+        window.location.href = "/Quanlybatdoi/login.html";
+    }
+
     initMasterEvents();
 
     getSanBongs();

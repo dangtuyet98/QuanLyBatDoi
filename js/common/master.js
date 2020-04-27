@@ -17,9 +17,13 @@ function initMasterEvents() {
     // initAvatarEvents();
     // getAvatar(); // avatar thoi
     $('a#btn-logout').on('click', function () {
-        if (confirm('Are you sure you want to exit?')) {
-            window.location.href = '/logout';
-        }
+            sessionStorage.setItem("adminId", '');
+            sessionStorage.setItem("adminTen", '');
+            sessionStorage.setItem("adminEmail", '');
+            sessionStorage.setItem("adminToken", '');
+            sessionStorage.setItem("adminAnhbia", '');
+            sessionStorage.setItem("islogined", "false");
+            window.location.href = "/Quanlybatdoi/login.html";
     });
     $(window).on('resize', function () {
         adjustSidebarOnResize();
