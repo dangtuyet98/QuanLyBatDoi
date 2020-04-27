@@ -1,0 +1,107 @@
+.block {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.profile-modal {
+    min-width: 350px;
+    z-index: 2;
+    width: 600px;
+    height: 300px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: grow 0.25s;
+}
+
+.profile-header {
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    font-size: 24px;
+    border-bottom: 2px solid #E8E5E5;
+}
+
+.profile-body {
+    width: 100%;
+    height: 200px;
+    border-bottom: 2px solid #E8E5E5;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border: 1px solid #b9b9b9;
+    border-radius: 80px;
+}
+
+.avatar-upload {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    text-align: center;
+    background-color: #9f9f9f;
+    color: white;
+    margin-top: 135px;
+    margin-left: -45px;
+}
+
+.avatar-upload i {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.profile-inf {
+    margin-left: 200px;
+    height: 200px;
+}
+
+.profile-inf div {
+    height: 40px;
+    font-size: 14px;
+    padding-top: 13px;
+}
+
+.inf {
+    text-align: center;
+}
+
+.profile-inf hr {
+    width: 100%;
+    color: #E8E5E5;
+    opacity: 0.5;
+}
+
+.profile-footer {
+    width: 100%;
+    height: 60px;
+}
+
+.profile-closeBtn {
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    float: right;
+    background-color: #AAB6B6;
+    margin-top: 10px;
+    margin-right: 10px;
+}

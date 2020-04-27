@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quan Ly San Bong</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/common/robotofont.css">
+    <link rel="stylesheet" type="text/css" href="css/page/sanbong.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page/popup.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page/master.css">
+    <link rel="stylesheet" type="text/css" href="css/page/user_menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <script src="js/common/master.js"></script>
+    <script src="js/page/sanbong.js"></script>
+    <script src="js/common/table.js"></script>
+
+</head>
+<body>
+<div class="header"> 
+    <div class="header-fill-blank"></div>
+    <div class="menu-account">
+        <div class="dropbtn">
+            <div style="flex: 1"></div>
+            <div class="dropdown-inner">
+                <div class="user-logo">
+                    <img src="content/image/user.png" alt="user-logo">
+                </div>
+                <div class="username-text" th:utext="${user.getUsername()}"><b></b></div>
+                <div class="expand-icon"><i class="fa fa-caret-down"></i></div>
+                <div class="dropdown-content">
+                    <a id="btn-profile"><span>Profile</span></a>
+                    <a id="btn-logout"><span>Logout</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="center">
+    <div class="sidebar">
+        <div class="navigation">
+            <ul>
+                <li><a href="sanbong.html">
+                    <div class="active-tab"> Sân bóng</div>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="inner" style="background-color: white">
+            <div allEmplement class="manage-group" id="group-block">
+            
+                <div allEmplement class="center-manage">
+                    <div allEmplement class="add-group">
+                        <div class="col-add-group">
+                            <button allEmplement type="button" class="btn btn-add-group" id="btnAddGroup">Thêm sân bóng 
+                            </button>
+                        </div>
+                        <!-- <i allEmplement class="fa fa-rotate-left overlay reload" type="button"></i> -->
+                    </div>
+                    <div allEmplement class="table-container">
+                        <div allEmplement class="header-group">
+                            <div allEmplement class="show-any-entries">
+                                <label allEmplement class="word">Show</label>
+                                <select allEmplement class="numOfEntries" id="numOfEntries">
+                                    <option class="option" value="5">5</option>
+                                    <option class="option" value="10">10</option>
+                                    <option class="option" value="15">15</option>
+                                </select>
+                                <label allEmplement=class="word">entries</label>
+                            </div>
+                            <div allEmplement class="search-group">
+                                <label allEmplement class="word">Search</label>
+                                <input allEmplement autocomplete="off" id="input-search" onkeyup="searchSanBong()"
+                                       class="input-search" maxlength="64" name="searchGroup"
+                                       placeholder="Search group name..." type="text">
+                            </div>
+                        </div>
+                        <div class="scrollable">
+                            <table class="table-header">
+                                <thead>
+                                <tr class="title">
+                                    <th class="" width="7%">STT</th>
+                                    <th class="" width="13%" style="text-align: left">Tên</th>
+                                    <th class="" width="10%" style="text-align: left">Số người</th>
+                                    <th class="" width="25%" style="text-align: left">Địa chỉ</th>
+                                    <th class="" width="25%" style="text-align: left">Mô tả</th>
+                                    <th class="" width="13%" style="text-align: left">Số điện thoại</th>
+                                    <th class="" width="7%" style="text-align: left">Actions</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <div class="table-body-container">
+                                <table allEmplement id="table-group" class="table-body">
+                                    <tbody class="inputTable" id="table-input">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <table class="table-footer">
+                                <tfoot align="left">
+                                <tr>
+                                    <th id="footerTotal">Total: <span></span></th>
+                                    <th id="footerPageSize">Page Size: <span></span></th>
+                                    <th id="footerCurPage">Current Page: <span>1</span></th>
+                                    <th id="previousPage"><i class="fa fa-arrow-left"></i></th>
+                                    <th id="nextPage"><i class="fa fa-arrow-right"></i></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup-background">
+    <div allEmplement class="popup formAddGroup" id="formadd">
+        <form allEmplement class="popup-form form-add" id="form-add">
+            <div allEmplement class="form-group title-form">Thêm sân bóng</div>
+            <div allEmplement class="popup-group-block">
+                <div class="error-message error-server"></div>
+
+                <div class="sanbong-img">
+                    <img src="content/image/Product.png" class="sanbongImg">
+                    <span class="sanbong-upload"><i class="fa fa-camera"></i></span>
+                    <input type="file" name="upload-add" style="display: none" id="linkAdd">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 25px; display: flex; 
+                    margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Tên sân bóng:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" id="ten"
+                           name="ten" style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Số người:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" id="songuoi"
+                           name="songuoi" style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Dịa chỉ:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" id="diachi"
+                           name="diachi" style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Số điện thoại:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" id="sdt"
+                           name="sdt" style="width: 300px">
+                </div>
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; margin-left: 20px; 
+                        margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Mô tả:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" id="mota"
+                           name="mota" style="width: 600px">
+                </div>
+
+                
+
+            </div>
+            <div allEmplement class="row">
+                <button allEmplement class="btn-popup btn-submit" type="button" id="submit-add">Thêm</button>
+                <button allEmplement class="btn-popup btn-close" id="close-add" type="button">Đóng</button>
+            </div>
+        </form>
+    </div>
+    <div allEmplement class="popup formEditGroup" id="formedit">
+        <form allEmplement class="popup-form form-edit" id="form-edit">
+            <div allEmplement class="form-group title-form">Cập nhật sân bóng</div>
+            <div class="edit-id" style="display: none"></div>
+            <div class="edit-index" style="display: none"></div>
+            <div allEmplement class="popup-group-block">
+                <div class="error-message error-server"></div>
+
+                <div class="sanbong-img">
+                    <img src="content/image/Product.png" class="sanbongImg">
+                    <span class="sanbong-upload"><i class="fa fa-camera"></i></span>
+                    <input type="file" name="upload-edit" style="display: none" id="linkEdit" name="linkEdit">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 25px; display: flex;
+                    margin-right: 20px;">
+                    <div class="ten"><label allEmplement class="font-label">Tên sân bóng:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" name="ten"
+                        style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="songuoi"><label allEmplement class="font-label">Số người:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" name="songuoi"
+                        style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="diachi"><label allEmplement class="font-label">Địa chỉ:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" name="diachi"
+                        style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; display: flex;
+                    margin-right: 20px;">
+                    <div class="title-group-input"><label allEmplement class="font-label">Số điện thoại:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" name="sdt"
+                        style="width: 300px">
+                </div>
+
+                <div allEmplement class="form-group group-input" style="padding-top: 15px; margin-left: 20px
+                    margin-right: 20px;">
+                    <div class="mota" style="padding-bottom: 10px"><label allEmplement class="font-label">Mô tả:</label>
+                    </div>
+                    <input allEmplement autocomplete="off" class="form-input-add" type="text" name="mota" 
+                        style="width: 600px">
+                </div>
+                
+
+            </div>
+            <div allEmplement class="row">
+                <button allEmplement class="btn-popup btn-edit" type="button" id="submit-edit">Cập nhật</button>
+                <button allEmplement class="btn-popup btn-close" type="button" id="close-edit">Đóng</button>
+            </div>
+        </form>
+    </div>
+    <div allEmplement class="popup formRemoveGroup" id="formRemove">
+        <form allEmplement class="popup-form remove-form">
+            <div allEmplement class="form-group title-form">Xóa sân bóng?</div>
+            <div class="remove-block">
+                <label allEmplement class="message">Bạn có chắc muốn xóa sân bóng?</label>
+            </div>
+            <div allEmplement class="row">
+                <button allEmplement class="btn-popup btn-remove" id="submit-remove" type="button">Yes</button>
+                <button allEmplement class="btn-popup btn-close" id="close-remove" type="button">No</button>
+            </div>
+            <div class="remove-id"></div>
+        </form>
+    </div>
+    <div class="popup message-success" id="message-success">
+        <form class="modal-success">
+            <div class="body-message">
+                Successfully
+            </div>
+            <div class="row">
+                <button type="button" class="btn-popup btn-success">OK</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="block" id="success-message" tabindex="0">
+    <form class="success-message">
+        <div class="body-message">
+        </div>
+        <div allEmplement class="row">
+            <button allEmplement class="btn-popup btn-success" id="success" type="button">OK</button>
+        </div>
+    </form>
+</div>
+<div class="block" id="profile" tabindex="0">
+    <form class="profile-modal">
+        <div class="profile-header">`
+            Profile
+        </div>
+        <div class="profile-body">
+            <div class="profile-img">
+                <img src="content/image/user.png" class="avatar">
+                <span class="avatar-upload"><i class="fa fa-camera"></i></span>
+                <input type="file" name="upload-avatar" style="display: none" id="uploadAvatar">
+            </div>
+            <div class="profile-inf">
+                <div>
+                    <span>Name:&nbsp;&nbsp;</span>
+                    <span class="inf" th:utext="${user.getFullName()}"></span>
+                    <hr>
+                </div>
+                <div>
+                    <span>Email:&nbsp;&nbsp;</span>
+                    <span class="inf" th:utext="${user.getEmail()}"></span>
+                    <hr>
+                </div>
+                <div>
+                    <span>Group:&nbsp;&nbsp;</span>
+                    <span class="inf" th:utext="${user.getGroupName()}"></span>
+                    <hr>
+                </div>
+                <div>
+                    <span>Created Date:&nbsp;&nbsp;</span>
+                    <span class="inf" th:utext="${user.getDateCreated()}"></span>
+                    <hr>
+                </div>
+                <div>
+                    <span>Book Count:&nbsp;&nbsp;</span>
+                    <span class="inf" th:utext="${bookCount}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="profile-footer">
+            <button type="button" class="profile-closeBtn">
+                Close
+            </button>
+        </div>
+    </form>
+</div>
+<div class="modal" id="disableSync">
+    <div class="disable-sync-confirm-modal">
+        <div class="confirm-message">Are you sure?</div>
+        <div class="modal-footer">
+            <button type="button" class="closeBtn modal-button">No</button>
+            <button type="button" class="submit-event modal-button" id="confirmDisableSync">Yes</button>
+        </div>
+    </div>
+</div>
+<div id="loading-gif" align="center">
+    <img src="content/image/ajax-loader.gif">
+</div>
+</body>
+</html>

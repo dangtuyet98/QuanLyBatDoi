@@ -1,0 +1,238 @@
+.popup-background {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .4);
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.popup {
+    display: none;
+    width: 700px;
+    margin: 10vh auto 0}
+
+.popup-form {
+    background-color: #fefefe;
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 100%;
+    animation: grow 0.25s;
+
+}
+
+.message-success {
+    background-color: #fefefe;
+    border: groove thick #f2f2f2;
+    border-radius: 1px;
+}
+
+.remove-block {
+    font-size: 16px;
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+.form-room, .form-user, .form-group {
+    padding: 0 2%;
+}
+
+.title-form {
+    max-width: 100%;
+    max-height: 10%;
+    text-align: left;
+    border-bottom: solid 1px #dddddd;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.title-room-input, .title-user-input, .title-group-input {
+    /*margin-bottom: 10px;*/
+}
+
+.group-input, .room-input {
+    margin: 1vh 0 1vh;
+    border-bottom: 1px solid #E8E5E5;
+}
+
+.custom-room {
+    height: 40px;
+}
+
+.row {
+    width: 100%;
+    height: 50px;
+    text-align: right;
+    display: inline-block;
+    border-top: solid 1px #dddddd;
+    margin-top: 10px;
+}
+
+.btn-popup {
+    color: #ffffff;
+    border: none;
+    padding: 2px;
+    margin: 5px 3px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    width: 80px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit, .btn-edit, .btn-remove {
+    background-color: #454d55;
+}
+
+.btn-submit:hover, .btn-edit:hover, .btn-remove:hover, .btn-success:hover {
+    background-color: #656d75;
+}
+
+.btn-close {
+    background-color: #7a868f;
+}
+
+.btn-close:hover {
+    background-color: #515b64;
+}
+
+.form-input-add, .form-input-edit {
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 5px 3px 10px;
+    box-sizing: border-box;
+    border: none;
+    /*border-radius: 4px;*/
+}
+.form-input-add:focus, .form-input-edit:focus {
+    outline-style: none;
+    /*border-radius: 4px;*/
+}
+.required {
+    font-style: oblique;
+}
+
+.user-input {
+    margin-top: 10px;
+}
+
+.font-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+div.square {
+    margin-left: 10px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.dangerous-form {
+    color: red;
+    height: 20px;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.red-border {
+    border: 1px solid red;
+}
+
+.popup-success {
+    border: solid 1px;
+}
+
+.error-server {
+    margin: 1vh;
+    padding-top: 8px;
+    background-color: rgb(249, 208, 208);
+    color: red;
+    font-style: oblique;
+    height: 30px;
+    align-items: center;
+    font-size: 14px;
+    display: none;
+    padding-left: 5px;
+}
+
+.error-name, .error-size, .error-email, .error-password, .error-repassword {
+    font-style: oblique;
+    height: 100%;
+    font-size: 13px;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.success-message {
+    background-color: #fefefe;
+    width: 350px;
+    margin-top: 30vh;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px white;
+    border-radius: 8px;
+    animation: grow 0.25s;
+}
+
+.success-message .row {
+    width: 100%;
+    height: 50px;
+    text-align: right;
+    display: inline-block;
+    border-top: solid 1px #dddddd;
+}
+
+.body-message {
+    font-size: 16px;
+    text-align: left;
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+.btn-success {
+    background-color: #454d55;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 5px 3px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    width: 80px;
+    cursor: pointer;
+}
+
+.el-switch{
+    position: absolute;
+    margin-left: 10px;
+}
